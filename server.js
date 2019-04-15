@@ -10,8 +10,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/timestamp/:dateString", (req, res, next) => {
-	const date = req.params.dateString;
-
+	let date = req.params.dateString;
+	if (/^\d{1,}$/g.test(date)) date = parseInt(date, 10);
 	if (!date) {
 		const now = new Date();
 		res.json({

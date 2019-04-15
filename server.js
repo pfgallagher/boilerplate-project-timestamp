@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 app.get("/api/timestamp/:dateString", (req, res, next) => {
 	let date = req.params.dateString;
 	if (/^\d{1,}$/g.test(date)) date = parseInt(date, 10);
+	console.log(date);
 	if (date === "") {
 		const now = new Date();
 		res.json({
